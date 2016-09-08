@@ -12,7 +12,7 @@ int main () {
   imprimirFila(alunos);
 
   while(!filaVazia(alunos))
-    printf ("removido: %d \n", removerFinal(alunos));
+    printf ("removido: %d \n", removerInicio(alunos));
 
 
   inserirFinal(alunos, 10);

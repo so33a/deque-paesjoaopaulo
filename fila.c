@@ -34,8 +34,8 @@ void inserirInicio(FILA f, int e) {
   } else {
     link novono = novoNo(e, NULL);
     novono->next = f->maisAntigo;
-    f->maisAntigo->next = novono;
-    f->maisAntigo = f->maisAntigo->next;
+    f->maisAntigo = novono;
+    //f->maisAntigo = f->maisAntigo->next;
   }
 }
 
