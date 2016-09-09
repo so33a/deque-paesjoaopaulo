@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "fila.h"
 
+
 int main () {
   FILA alunos = novaFila();
   inserirInicio(alunos, 11);
