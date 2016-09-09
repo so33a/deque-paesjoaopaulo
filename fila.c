@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "fila.h"
 
+
 link novoNo(int item, link next) {
   link t = malloc(sizeof *t);
   if (t == NULL) {
@@ -35,7 +36,6 @@ void inserirInicio(FILA f, int e) {
     link novono = novoNo(e, NULL);
     novono->next = f->maisAntigo;
     f->maisAntigo = novono;
-    //f->maisAntigo = f->maisAntigo->next;
   }
 }
 
