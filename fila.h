@@ -1,6 +1,7 @@
 #ifndef FILA_H
 #define FILA_H
 
+
 typedef struct node * link;
 
 struct node {
