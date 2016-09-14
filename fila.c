@@ -34,9 +34,7 @@ void inserirInicio(FILA f, int e) {
   if(f->maisNovo == NULL) {
     f->maisNovo = f->maisAntigo = novoNo(e, NULL);
   } else {
-    link novono = novoNo(e, NULL);
-    novono->next = f->maisAntigo;
-    f->maisAntigo = novono;
+    f->maisAntigo = novoNo(e, f->maisAntigo);
   }
 }
 
@@ -47,7 +45,6 @@ int removerInicio(FILA f){
     printf ("Erro, a fila esta vazia.\n");
     return 0;
   }
-  printf("Mais antigo: %d\n", f->maisAntigo->item);
   x = f->maisAntigo->item;
   t = f->maisAntigo;
   f->maisAntigo = t->next;
@@ -74,6 +71,7 @@ int removerFinal(FILA f){
     atual = atual->next;
   }
   x = atual->next->item;
+  atual->next = NULL;
   f->maisNovo = atual;
  
   if(f->maisNovo == NULL)
@@ -90,13 +88,12 @@ int filaVazia(FILA f) {
 void imprimirFila(FILA f) {
   link t;
   if(!filaVazia(f)){
-    printf ("LISTA::\n");
     for(t = f->maisAntigo; t != NULL; t = t->next) 
       printf ("%d ", t->item);
     printf ("\n");
-    printf ("FIM::\n");
+
   } else {
-    printf ("VAZIA::\n");
+    printf ("FILA VAZIA::\n");
   }
 }
 

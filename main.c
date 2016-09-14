@@ -12,11 +12,10 @@ int main () {
 
   imprimirFila(alunos);
 
-  printf ("removido inicio': %d \n", removerInicio(alunos));
-  printf ("removido inicio': %d \n", removerInicio(alunos));
-  printf ("removido inicio': %d \n", removerInicio(alunos));
+  printf ("removido final': %d \n", removerFinal(alunos));
+  printf ("removido final': %d \n", removerFinal(alunos));
   while(!filaVazia(alunos))
-    printf ("remove final: %d \n", removerFinal(alunos));
+    printf ("remove inicio: %d \n", removerInicio(alunos));
 
 
   imprimirFila(alunos);
