@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "fila.h"
 
+int i = 0;
 
 link novoNo(int item, link next) {
   link t = malloc(sizeof *t);
@@ -43,13 +44,13 @@ int removerInicio(FILA f){
   int x;
   link t;
   if(filaVazia(f)){
-    printf ("Erro, a fila esta vazia\n");
+    printf ("Erro, a fila esta vazia.\n");
     return 0;
   }
-  
+  printf("Mais antigo: %d\n", f->maisAntigo->item);
   x = f->maisAntigo->item;
   t = f->maisAntigo;
-  f->maisAntigo = f->maisAntigo->next;
+  f->maisAntigo = t->next;
  
   if(f->maisAntigo == NULL)
     f->maisNovo = NULL;
@@ -61,14 +62,19 @@ int removerInicio(FILA f){
 int removerFinal(FILA f){
   int x;
   link t;
+  
   if(filaVazia(f)){
-    printf ("Erro, a fila esta vazia\n");
+    printf ("Erro, a fila esta vazia.\n");
     return 0;
   }
   
-  x = f->maisNovo->item;
   t = f->maisNovo;
-  f->maisNovo = f->maisNovo->next;
+  link atual = f->maisAntigo;
+  while(atual->next != t){
+    atual = atual->next;
+  }
+  x = atual->next->item;
+  f->maisNovo = atual;
  
   if(f->maisNovo == NULL)
     f->maisAntigo = NULL;
@@ -83,14 +89,20 @@ int filaVazia(FILA f) {
 
 void imprimirFila(FILA f) {
   link t;
-  for(t = f->maisAntigo; t != NULL; t = t->next) 
-    printf ("%d ", t->item);
-  printf ("\n");
+  if(!filaVazia(f)){
+    printf ("LISTA::\n");
+    for(t = f->maisAntigo; t != NULL; t = t->next) 
+      printf ("%d ", t->item);
+    printf ("\n");
+    printf ("FIM::\n");
+  } else {
+    printf ("VAZIA::\n");
+  }
 }
 
 void destroiFila(FILA f) {
   while (!filaVazia(f))
-    removerFinal(f);
+    removerInicio(f);
   free(f);
 }
 
